@@ -1,0 +1,17 @@
+FROM node:23-alpine
+
+RUN addgroup app && adduser -SG app app
+USER app
+WORKDIR /app
+
+COPY package*.json .
+RUN npm install
+COPY . .
+ENV APT_URL=https://localhost
+EXPOSE 2000
+ENTRYPOINT [ "npm" ,"run", "dev" ]
+
+# RUN apk update && apk fetch curl  &&  apk add curl
+# RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
+# RUN pnpm install
+

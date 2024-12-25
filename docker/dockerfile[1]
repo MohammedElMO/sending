@@ -1,0 +1,8 @@
+
+FROM node:alpine
+
+COPY . /my-app
+
+WORKDIR /my-app
+
+CMD ["node", "app.js"] 
